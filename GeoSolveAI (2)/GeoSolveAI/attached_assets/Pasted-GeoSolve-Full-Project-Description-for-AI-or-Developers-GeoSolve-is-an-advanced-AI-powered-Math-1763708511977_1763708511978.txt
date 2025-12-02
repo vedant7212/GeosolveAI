@@ -1,0 +1,188 @@
+GeoSolve — Full Project Description (for AI or Developers)
+
+GeoSolve is an advanced, AI-powered Math & Geometry Web Application developed by CALCORE.
+The goal is to create a smooth, modern, fast web app that can:
+solve math problems, explain steps, analyze images, perform OCR, visualize geometry, and provide AI tutoring.
+
+🎯 Main Objectives
+
+GeoSolve should function as:
+
+1. Math Problem Solver
+
+Accepts math queries like:
+
+solve 2x^2 + 3x - 5 = 0
+
+integrate x^2 sin(x)
+
+differentiate tan(x)
+
+Supports algebra, calculus, trigonometry, matrices, and statistics.
+
+Generates step-by-step explanations using:
+
+Local symbolic logic (SymPy-based)
+
+Optional Gemini API for more advanced breakdowns
+
+2. Geometry Visualizer
+
+Accepts commands like:
+
+triangle 3 4 5
+
+circle 7
+
+Automatically draws shapes
+
+Computes area, perimeter, angles, and properties
+
+Uses plotted graphs (PNG/base64 from backend)
+
+3. Multimodal Input System
+
+GeoSolve must support:
+
+a) Image OCR
+
+User uploads an image of a handwritten or printed math problem
+
+AI extracts text using:
+
+EasyOCR (preferred for handwriting)
+
+Tesseract fallback
+
+b) Sketch Input
+
+User draws on canvas (React canvas API)
+
+Canvas image sent to backend OCR → converted to equations
+
+c) PDF Extraction
+
+Upload PDF → extract text using pdfplumber
+
+4. AI Tutoring Features
+
+Conversational explanations
+
+“Explain steps” for equations & integrals
+
+Generate practice problems & quizzes
+
+Supports difficulty levels:
+
+High School
+
+Standard
+
+College
+
+5. Gemini API Integration
+
+Takes user query + detected math problem
+
+Produces:
+
+Step-by-step explanations
+
+Alternative solving methods
+
+Concept breakdowns
+
+Related practice questions
+
+🛠 Tech Stack
+Backend (Python)
+
+Flask
+
+SymPy
+
+EasyOCR / pytesseract
+
+pdfplumber
+
+matplotlib (for plotting)
+
+NumPy
+
+Requests (for Gemini API)
+
+Frontend (React)
+
+Create React App
+
+Bootstrap UI
+
+Tabs: Math, Geometry, Multimodal
+
+Canvas sketch
+
+Image & PDF upload
+
+Plot rendering (base64 images from backend)
+
+Hosting (Free)
+
+Backend (Flask): Render.com (free tier)
+
+Frontend (React): Vercel (free tier)
+
+Optional (Future)
+
+PWA support (installable app)
+
+Play Store APK via WebView
+
+Google Ads integration (AdSense/AdMob)
+
+📡 API Endpoints Needed
+POST /api/solve
+
+Input: { "query": "solve 2*x + 3 = 0" }
+Output: solution + step-by-step
+
+POST /api/plot
+
+Input: { expr: "sin(x)", from: 0, to: 6.28 }
+Output: base64 PNG
+
+POST /api/ocr
+
+Image upload → returns recognized text
+
+POST /api/pdf
+
+PDF upload → returns extracted text
+
+POST /api/gemini
+
+Input: { prompt: "...", api_key: "..." }
+Output: Gemini-generated explanation
+
+🎨 UI Requirements
+
+Smooth, modern design (Bootstrap)
+
+Tabs: Math | Geometry | Multimodal
+
+Dark output box for math results
+
+Canvas for drawing handwriting
+
+Clear buttons for:
+
+Solve
+
+Plot
+
+LLM Explain
+
+Upload image
+
+Upload PDF
+
+Save sketch
